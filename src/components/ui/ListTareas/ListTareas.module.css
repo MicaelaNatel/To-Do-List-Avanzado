@@ -1,0 +1,75 @@
+.containerPrincipalListTareas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: #f9f9f9;
+}
+
+.containerTitleAndButton {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 70%;
+    max-width: 800px;
+}
+
+.containerList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: #e0e0e0;
+    width: 70%;
+    min-height: 60vh;
+    max-width: 800px;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.addButton {
+    background-color: #4CAF50; 
+    color: white;
+    padding: 12px 24px; 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+
+.addButton:hover {
+    background-color: #45a049; 
+    transform: scale(1.05); 
+}
+
+.titleListTareas {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5rem; 
+    font-weight: 600; 
+    color: #333;
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    margin: 0;
+    padding-bottom: 1rem; 
+    border-bottom: 3px solid #4CAF50; 
+}
+
+.noTareasMessage {
+    font-family: 'Arial', sans-serif; 
+    font-size: 1.2rem; 
+    color: #555; 
+    font-weight: 400; 
+    text-align: center; 
+    margin-top: 2rem; 
+    letter-spacing: 0.5px; 
+}

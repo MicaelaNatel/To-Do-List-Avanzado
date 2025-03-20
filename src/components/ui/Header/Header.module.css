@@ -1,0 +1,19 @@
+.containerHeader {
+    width: 100%;
+    height: 8vh;
+    background-color: #4a90e2;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 0 2rem;
+    color: white;
+    border-bottom: 3px solid #357abd;
+}
+
+.containerTitleHeader {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center; 
+    width: 100%;
+}

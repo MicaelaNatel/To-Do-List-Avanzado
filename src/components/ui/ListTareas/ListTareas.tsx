@@ -1,53 +1,40 @@
-import { useEffect, useState } from "react";
-import { tareaStore } from "../../../store/tareaStore";
+import { FC } from "react";
 import styles from "./ListTareas.module.css";
-import { CardList } from "../CardList/CardList";
-import { Modal } from "../Modal/Modal";
 import { ITarea } from "../../../types/ITarea";
-import { useTareas } from "../../../hooks/useTareas";
+import TaskEyeButton from "../TaskEyeButton/TaskEyeButton";
+import EditButton from "../EditButton/EditButton";
+import DeleteButton from "../DeleteButton/DeleteButton";
 
-export const ListTareas = () => {
-    const setTareaActiva = tareaStore((state)=> state.setTareaActiva)
 
-    const {getTareas, tareas} = useTareas();
+type IPropsITarea = {
+  tarea: ITarea;
+};
 
-    useEffect(()=>{
-        getTareas();
-    }, []);
+const ListTareas: FC<IPropsITarea> = ({ tarea }) => {
+  return (
+    <div className={styles.tarea}>
+      <div className={styles.containerRow}>
+        <span className={styles.titulo}>Título: {tarea.titulo}</span>
+        <span className={styles.descripcion}>Descripción: {tarea.descripcion}</span>
+        <span className={styles.fecha}>
+        Fecha Límite: {new Date(tarea.fechaLimite).toISOString().split("T")[0]}
+        </span>
+        <button className={styles.enviar}>
+          Enviar a <img src="./send.svg" alt="" />
+        </button>
+        <div className={styles.selectContainer}>
+          <select className={styles.select}>
+            <option>Seleccione un Sprint</option>
+          </select>
+        </div>
+        <div className={styles.acciones}>
+          <TaskEyeButton />
+          <EditButton />
+          <DeleteButton />
+        </div>
+      </div>
+    </div>
+  );
+};
 
-    const [openModalTarea, setOpenModalTarea] = useState(false);
-
-    const handleOpenModalEdit = (tarea: ITarea) => {
-        setTareaActiva(tarea);
-        setOpenModalTarea(true);
-    };
-
-    const handleCloseModal = () => {
-        setOpenModalTarea(false);
-    }
-
-    return (
-        <>
-            <div className={styles.containerPrincipalListTareas}>
-                <div className={styles.containerTitleAndButton}>
-                    <h2 className={styles.titleListTareas}>Lista de Tareas</h2>
-                    <button className={styles.addButton} onClick={() => {setOpenModalTarea(true)}}>
-                        Agregar tarea
-                    </button>
-                </div>
-                <div className={styles.containerList}>
-                    {tareas.length > 0 ? (
-                        tareas.map ((el)=> (
-                            <CardList handleOpenModalEdit={handleOpenModalEdit} tarea={el}/>
-                        ))
-                    ):(
-                        <div className={styles.noTareasMessage}>
-                            <h2>No hay Tareas</h2>
-                        </div>
-                    )}
-                </div>
-            </div>
-            {openModalTarea && <Modal handleCloseModal={handleCloseModal}/>}
-        </>
-    )
-}
+export default ListTareas;
